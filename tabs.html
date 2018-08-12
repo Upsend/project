@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<style>
+		ul{
+			list-style: none;
+		}
+		.tabs{
+			display: inline;
+			width: 100px;
+			height: 30px;
+			border: 1px solid rgb(57, 131, 57);
+			background: rgb(57, 131, 57);
+			cursor: pointer;
+			border-radius: 2px;
+		}
+
+		.content{
+			width: 300px;
+			height: 151px;
+			border: 1px solid rgb(57, 131, 57);
+			margin-left: 40px;
+			margin-top: -15px;
+			border-radius: 5px;
+
+		}
+
+		.active{
+			background: #fff;
+			border-bottom: #fff;
+			font: black;
+		}
+		
+		a{
+			font: black;
+			text-decoration: none;
+		}
+		
+	</style>
+
+</head>
+<body>
+
+	<div class="tab-control">
+		<ul>
+			<li class="tabs"><a href="#cont-1">Tab 1</a></li>
+			<li class="tabs"><a href="#cont-2">Tab 2</a></li>
+			<li class="tabs"><a href="#cont-3">Tab 3</a></li>
+		</ul>
+		<div class="content">
+			<div class="cont" id="cont-1">content 1</div>
+			<div class="cont" id="cont-2">content 2</div>
+			<div class="cont" id="cont-3">content 3</div>	
+		</div>
+	</div>
+
+	<script>
+	
+	$(document).ready(function(){
+		$('.cont').hide();
+		$('.cont:first').show();
+		$('.tabs:first').addClass('active');
+
+		$('.tabs').on('click', function() {
+			var elements = $('.tabs');
+			
+			for (var i = 0; i< elements.length; i++) {
+				$(elements[i]).removeClass('active');
+			}
+
+			$(this).addClass('active');
+			$('.cont').hide();
+			var setTab = $(this).find('a').attr('href');
+			$(setTab).show();
+		
+		})
+	});
+	</script>
+
+</body>
+</html>
